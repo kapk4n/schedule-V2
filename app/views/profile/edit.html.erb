@@ -20,12 +20,10 @@
       <tr> <td>  </td></tr>
 
         <tr>
-          <td>  <h5>Subjects:  </h5></td>
+          <td>  <h5>Subject:  </h5></td>
         </tr>
-          <% @user.predmet.select(:tless, :name).distinct.each do |sub| %>
-            <td>  <h6><%= @ind += 1 %> </h6> </td>
-            <td><h6> <%=link_to sub.name, sub_prof_path(id: Predmet.find_by(name: sub.name, tless: sub.tless)) %>  </h6></td>
-            <td> <h6><%= sub.tless %> </h6> </td>
+          <% @user.teach.each do |sub| %>
+            <td><h6> <%=link_to sub.predmet.name, sub_prof_path(id: Predmet.find_by(name: sub.predmet.name)) %>  </h6></td>
         </tr>
           <% end %>
 

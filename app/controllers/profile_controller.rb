@@ -8,7 +8,6 @@ class ProfileController < ApplicationController
 
   def edsubj
     @pred = Predmet.find_by(id: params[:id])
-    @norm = Predmet.select(:tless, :user_id).where("name = ?", "#{@pred.name}").distinct
     @ind = 0
   end
 end

@@ -7,9 +7,8 @@ class RegistrationsController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       @user.student!
-      # Predmet.ids.each do |qr|
-      #   List.create(user_id: @user.id, predmet_id: qr, spisok: '')
-      # end
+      st = Stud.create(user_id: @user.id)
+      jcreate(@user, st)
       session[:user_id] = @user.id
       redirect_to root_path, notice: "Successfully created account"
     else
@@ -19,6 +18,17 @@ class RegistrationsController < ApplicationController
   end
 
   private
+
+  def jcreate(user, st)
+    a = []
+    6.times do
+      a.push('')
+    end
+    las = Predmet.ids
+    las.each do |qr|
+      List.create(spisok: ActiveSupport::JSON.encode(a), predmet_id: qr, stud_id: st.id)
+    end
+  end
 
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation, :name)

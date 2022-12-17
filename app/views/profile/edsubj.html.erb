@@ -8,15 +8,10 @@
       <tr> <td>  </td></tr>
 
         <tr>
-          <td>  <h5>Kinds and Teachers:  </h5></td>
+          <td>  <h5>Teacher:  </h5></td>
         </tr>
-        
-          <% @norm.each do |sub| %>
-            <td>  <h6><%= @ind += 1 %> </h6> </td>
-            <td><h6> <%= sub.tless %>  </h6></td>
-            <td> <h6><%= link_to User.find_by(id: sub.user_id).name, profile_path(id:  User.find_by(id: sub.user_id).id), class:"link-info" %> </h6> </td>
+            <td> <h6><%= link_to @pred.teach.user.name, profile_path(id:  @pred.teach.user.id), class:"link-info" %> </h6> </td>
         </tr>
-          <% end %>
 
       
   </table>

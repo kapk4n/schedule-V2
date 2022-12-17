@@ -7,33 +7,37 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 <div id='result_container'>
-<h2><%=@sum.first.day%></h2>
-  <table class="table table-striped table-hover">
-    <th>
-      Name
-    </th>
-    <th>
-      Teacher
-    </th>
-    <th>
-      Time
-    </th>
-    <th>
-      Type
-    </th>
+<% unless @pred.first.nil? %>
+  <h2><%=@pred.first.day%></h2>
+    <table class="table table-striped table-hover">
+      <th>
+        Time
+      </th>
+      <th>
+        Name
+      </th>
+      <th>
+        Teacher
+      </th>
 
-    <% @sum.each do |par| %>
-      <tr>
-        <td> <%= link_to par.name, sub_prof_path(id: par.id), class:"link-info"%> </td>
-        <td> <%= link_to par.user.name, profile_path(id: par.user.id), class:"link-info"%> </td>
-        <td> <%= par.time %> </td>
-        <td> <%= par.tless %> </td>
-      </tr>
-    <% end %>
-  </table>
+      <% @pred.each do |par| %>
+        <tr>
+          <td> <%= par.time %> </td>
+          <td> <%= link_to par.predmet.name, sub_prof_path(id: par.predmet.id), class:"link-info"%> </td>
+          <td> <%= link_to par.predmet.teach.user.name, profile_path(id: par.predmet.teach.user.id), class:"link-info"%> </td>
+        </tr>
+      <% end %>
+    </table>
 
-</div>
+    </div>
+      </div>
     </div>
   </div>
-</div>
-    <% end %>
+  <% else %>
+  <div class="container">
+  <h1> ВЫХОДНОЙ </h1>
+  </div>
+      <% end %>
+
+<% end %>
+

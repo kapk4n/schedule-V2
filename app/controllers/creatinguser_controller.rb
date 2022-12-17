@@ -10,16 +10,26 @@ class CreatinguserController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       @user.student!
-      Predmet.ids.each do |qr|
-        List.create(user_id: @user.id, predmet_id: qr, spisok: '')
-      end
-        redirect_to administration_path, notice: "Successfully created account"
+      st = Stud.create(user_id: @user.id)
+      jcreate(@user, st)
+      redirect_to administration_path, notice: 'Successfully created account'
     else
-      redirect_to creatinguser_new_path, alert: "Invalid"
+      redirect_to creatinguser_new_path, alert: 'Invalid'
     end
   end
 
   private
+  
+  def jcreate(user, st)
+    a = []
+    6.times do
+      a.push('')
+    end
+    las = Predmet.ids
+    las.each do |qr|
+      List.create(spisok: ActiveSupport::JSON.encode(a), predmet_id: qr, stud_id: st.id)
+    end
+  end
 
   def user_params
     params.require(:user).permit(:email, :name, :password, :password_confirmation)
