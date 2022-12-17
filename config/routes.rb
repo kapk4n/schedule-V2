@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get 'posetion', to: 'poseshaemost#show'
   post 'posit', to: 'poseshaemost#open'
+  get 'posetion/edit', to: 'poseshaemost#jedit'
+
 
   get 'ed_subject/edit'
   get 'ed_subject/edsubj'

@@ -23,25 +23,8 @@ class PoseshaemostController < ApplicationController
     # @idex = [0, 1]
     @user = User.find_by(email: params[:email])
     @studs = Stud.all
-    # result1 = User.last.list.first
-    # a = []
-    # @x1 = 1
-    # a.push(@x1)
-    # @x1 = 1
-    # a.push(@x1)
-    # result1.update(spisok: ActiveSupport::JSON.encode(a))
-
-    # @result1 = result1.jresult
   end
 
-  # def counting
-  #   @user.list.each do |li|
-  #     li.predmet.name
-  #     if li.spisok == ''
-  #       @a = [0, 0, 0, 0, 0, 0]
-  #     else
-  #       @a.push(li.jresult)
-  #     end
-  #   end
-  # end
+  def jedit
+  end
 end
