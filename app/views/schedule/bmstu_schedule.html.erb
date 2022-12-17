@@ -1,0 +1,11 @@
+<h1>Schedule page</h1>
+
+<%= form_with url: new_path do |f| %>
+  <%= f.select :day, @week_days.each {|i| i}, include_blank: true, class: "form-select" %>
+  <br>
+  <br>
+  <%= f.submit value: "Show", class: "btn btn-info" %>
+<% end %>
+
+
+<%= turbo_frame_tag 'remote_modal' %>

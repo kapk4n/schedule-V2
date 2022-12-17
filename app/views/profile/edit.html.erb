@@ -1,0 +1,41 @@
+<h1>Profile</h1>
+<br>
+<table class="table table-borderless">
+    <th>
+      <h3> <%= @user.name %> </h3>
+    </th>
+    <h5>
+      <tr>
+        <td> 
+          <h5>Email:
+        </td>
+        <td>  <h5><%= @user.email %>  </h5> </td>
+      </tr>
+      <tr>
+        <td>  <h5>Role: </h5> </td>
+        <td>  <h5><%= @user.role %> </h5>  </td>
+      </tr>
+      <% if @user.role == 'teacher' %>
+      <tr> <td>  </td></tr>
+      <tr> <td>  </td></tr>
+
+        <tr>
+          <td>  <h5>Subjects:  </h5></td>
+        </tr>
+          <% @user.predmet.select(:tless, :name).distinct.each do |sub| %>
+            <td>  <h6><%= @ind += 1 %> </h6> </td>
+            <td><h6> <%=link_to sub.name, sub_prof_path(id: Predmet.find_by(name: sub.name, tless: sub.tless)) %>  </h6></td>
+            <td> <h6><%= sub.tless %> </h6> </td>
+        </tr>
+          <% end %>
+
+      <% end %>
+      
+  </table>
+
+<% if (User.present?) && (Current.user == User.find_by(id: params[:id])) %>
+  <%= link_to "Edit my password", edit_password_path %>
+<% end %>
+
+
+  <%= link_to "back", schedule_path , class: "btn btn-warning" %>

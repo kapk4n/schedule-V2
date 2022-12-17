@@ -1,0 +1,71 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <%= link_to "Home", root_path, class: "navbar-brand" %> 
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <%= link_to "Schedule", schedule_path, class: "nav-link" %> 
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ms-auto mb-2 mb-log-0">
+        <% if Current.user.present? %>
+          <% if Current.user.role == "admin" %>
+            <li class="nav-item">
+            <%= link_to Current.user.role, profile_path(id: Current.user.id), class: "nav-link" %>   <%# edit_password_path %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "edit prava", administration_path,  class: "btn btn-outline-success me-2" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "poseshaimost", posetion_path,  class: "btn btn-outline-success me-2" %>
+            </li>
+            <li class="nav-item">
+              <%= button_to "Logout", logout_path, method: :delete,  class: "btn btn-outline-danger" %>
+            </li>
+          <% else %>
+            <% if Current.user.role == "teacher" %>
+              <li class="nav-item">
+                <%= link_to Current.user.role, profile_path(id: Current.user.id), class: "nav-link" %>   <%# edit_password_path %>
+              </li>
+              <li class="nav-item">
+                <%= button_to "Logout teach", logout_path, method: :delete,  class: "btn btn-outline-danger" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Посещаемость", posetion_path(id: Current.user.id),  class: "btn btn-outline-success me-2" %>
+              </li>
+            <% else %>
+              <% if Current.user.role == "student" %>
+                <li class="nav-item">
+                  <%= link_to Current.user.role, profile_path(id: Current.user.id), class: "nav-link" %>   <%# edit_password_path %>
+                </li>
+                <li class="nav-item">
+                  <%= button_to "Logout stud", logout_path, method: :delete,  class: "btn btn-outline-danger" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "Посещаемость", posetion_path(id: Current.user.id),  class: "btn btn-outline-success me-2" %>
+                </li>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Login", sign_in_path, data: {controller: "user-modal"},  class: "nav-link"%>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Sign Up", sign_up_path, data: {controller: "user-modal"},  class: "nav-link"%>
+          </li>
+        <% end %>
+      </ul>
+
+    </div>
+  </div>
+  </div>
+
+</nav>
+
+
+

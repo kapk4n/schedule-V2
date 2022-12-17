@@ -1,0 +1,45 @@
+<h1>Admin page</h1>
+    <%= form_with model: @user, url: admin_role_path(id: params[:id], role: params[:role]) do |form| %>
+
+
+    <div class="mb-3">
+      <%= form.label :id %>
+      <%= form.text_field :id, class: "form-control", placeholder: "id" %>
+    </div>
+
+    <div class="mb-3">
+        <%= form.submit "Edit", class: "btn btn-success" %>
+        <%= form.submit "Delete",data: { turbo_confirm: 'Are you shure of deleting' }, class: "btn btn-danger" %>
+        <%= form.submit "Create", class: "btn btn-warning" %>
+    </div>
+
+
+  <table class="table">
+    <th>
+      Id
+    </th>
+    <th>
+      Name
+    </th>
+    <th>
+      Email
+    </th>
+    <th>
+      Role
+    </th>
+
+    <% @users_ids.each do |i|%>
+      <tr>
+        <td> <%= @users_all.find_by(:id => "#{i}")&.id %>  </td>
+        <td> <%= @users_all.find_by(:id => "#{i}")&.name %>  </td>
+        <td> <%= link_to @users_all.find_by(:id => "#{i}")&.email, profile_path(id: i) %> </td>
+        <td> <%= @users_all.find_by(:id => "#{i}")&.role %>  </td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+
+
+
+
+

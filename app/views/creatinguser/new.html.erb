@@ -1,0 +1,41 @@
+<h1>Creating User</h1>
+
+  <%= form_with model: @user, url: creatus_path do |form| %>
+
+
+
+<div id="try"></div>
+  
+    <% if form.object.errors.any? %>
+      <div class="alert alert-danger">
+        <% form.object.errors.full_messages.each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+      </div> 
+    <%end%>
+    
+    <div id="try"></div>
+
+    <div class="mb-3">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: "form-control", placeholder: "Ivan" %>
+    </div>
+    <div class="mb-3">
+      <%= form.label :email %>
+      <%= form.text_field :email, class: "form-control", placeholder: "student@bmstu.ru" %>
+    </div>
+    <div class="mb-3">
+      <%= form.label :password %>
+      <%= form.password_field :password, class: "form-control", placeholder: "password"%>
+    </div>
+    <div class="mb-3">
+      <%= form.label :password_confirmation %>
+      <%= form.password_field :password_confirmation, class: "form-control", placeholder: "password" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.submit "Create", class: "btn btn-primary" %>
+      <%= link_to "Back", administration_path , class: "btn btn-warning" %>
+    </div>
+    
+<% end %>

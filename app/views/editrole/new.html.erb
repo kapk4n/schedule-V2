@@ -1,0 +1,13 @@
+<%= form_with model: @user, url: edrole_path(id: params[:id], role: params[:role]) do |form| %>
+
+  <div class="mb-3">
+    <%= form.select :role, @users_all.each {|i| i}, include_blank: true %>
+    <%# <%= form.text_field :role, class: "form-control", placeholder: "role" %>
+  </div>
+
+  <div class="mb-3">
+      <%= form.submit "Save", class: "btn btn-success" %>
+      <%= link_to "back", administration_path , class: "btn btn-warning" %>
+
+  </div>
+<% end %>

@@ -1,0 +1,16 @@
+<h1>Poseshaemost</h1>
+
+<% if Current.user.role == 'admin' %>
+  <%= form_with url: posit_path do |f| %>
+    <%= f.select :name, @list_pred, include_blank: true %>
+    <br>
+    <br>
+    <%= f.submit value: "Show", class: "btn btn-info" %>
+  <% end %>
+<% elsif Current.user.role == 'teacher' %>
+  <%=  Predmet.first.name %>
+<% elsif Current.user.role == 'student' %>
+
+<% end %>
+
+<div id='result_container'></div>
