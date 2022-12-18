@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   get 'posetion', to: 'poseshaemost#show'
+  post 'posetion', to: 'poseshaemost#show'
   post 'posit', to: 'poseshaemost#open'
-  get 'posetion/edit', to: 'poseshaemost#jedit'
+  get 'posit_jup', to: 'poseshaemost#replacing'
+  post 'posit_jup', to: 'poseshaemost#replacing'
+  # patch 'posit_jup', to: 'poseshaemost#replacing'
+  post 'posetion/edit', to: 'poseshaemost#jedit'
 
 
   get 'ed_subject/edit'

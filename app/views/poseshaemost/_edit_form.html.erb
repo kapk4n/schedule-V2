@@ -1,0 +1,28 @@
+<%= turbo_frame_tag :remote_modal, target: :_top do %>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-controller="bs-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+          <div class='container'>
+            <%= form_with url: posit_path(name: Predmet.find_by(id: params[:predmet_id]).name, id: User.find_by(id: params[:id]).stud.first.id) do |form| %>
+              <% @new_model.jresult.each_with_index do |ind, index| %> 
+
+                <div>
+                <%= if index.even? then (form.label :"rk#{@i_rk += 1}") else (form.label :"dz#{@i_dz += 1}") end%>
+                <%= form.text_field :"fs#{index}", value: ind, class: "form-control" %>
+                <%#(name: Predmet.find_by(id: params[:predmet_id]).name, id: User.find_by(id: params[:id]).stud.first.id) %>
+                </div>
+
+              <% end %>
+              <%= form.submit value: "Edit", class: "btn btn-info", data: {action: "click->bs-modal#submitEnd" }  %>
+            <% end %>
+            
+          </div>
+      </div>
+    </div>
+  </div>
+<% end %>
