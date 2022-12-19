@@ -6,6 +6,7 @@
         <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      
 <div id='result_container'>
 <% unless @pred.first.nil? %>
   <h2><%=@pred.first.day%></h2>
@@ -19,12 +20,16 @@
       <th>
         Teacher
       </th>
+      <th>
+        Homework
+      </th>
 
       <% @pred.each do |par| %>
         <tr>
           <td> <%= par.time %> </td>
           <td> <%= link_to par.predmet.name, sub_prof_path(id: par.predmet.id), class:"link-info"%> </td>
           <td> <%= link_to par.predmet.teach.user.name, profile_path(id: par.predmet.teach.user.id), class:"link-info"%> </td>
+          <td> <%= par.predmet.homework%> </td>
         </tr>
       <% end %>
     </table>

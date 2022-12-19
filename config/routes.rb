@@ -2,10 +2,8 @@ Rails.application.routes.draw do
   get 'posetion', to: 'poseshaemost#show'
   post 'posetion', to: 'poseshaemost#show'
   post 'posit', to: 'poseshaemost#open'
-  get 'posit_jup', to: 'poseshaemost#replacing'
-  post 'posit_jup', to: 'poseshaemost#replacing'
-  # patch 'posit_jup', to: 'poseshaemost#replacing'
   post 'posetion/edit', to: 'poseshaemost#jedit'
+
 
 
   get 'ed_subject/edit'
@@ -34,6 +32,7 @@ Rails.application.routes.draw do
   delete "logout", to: "sessions#destroy"
 
   get "profile", to: "profile#edit"
+  post "profile_hw", to: "profile#homew"
   get "sub_prof", to: "profile#edsubj"
 
   get "administration", to: "administration#edit"

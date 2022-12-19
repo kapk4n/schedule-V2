@@ -17,13 +17,14 @@ class PoseshaemostController < ApplicationController
   end
 
   def open
+    @studs = Stud.all
+    @cur_us = Current.user
     if params[:commit] == 'Edit'
       replacing
     end
     @i = 0
-    @pred = params[:name]
+    @pred = Predmet.find_by(name: params[:name])
     @user = User.find_by(email: params[:email])
-    @studs = Stud.all
   end
 
   def jedit
@@ -36,7 +37,6 @@ class PoseshaemostController < ApplicationController
 
   def replacing
     jupdate(params[:name], params[:id])
-    # render posit_path(name: params[:name])
   end
 
   def jupdate(name, id)
@@ -46,7 +46,7 @@ class PoseshaemostController < ApplicationController
       if params[:"fs#{i}"].nil?
         a.push('')
       else
-        a.push(params[:"fs#{i}"])\
+        a.push(params[:"fs#{i}"])
       end
       i += 1
     end

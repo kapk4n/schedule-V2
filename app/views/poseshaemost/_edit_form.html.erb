@@ -1,27 +1,40 @@
 <%= turbo_frame_tag :remote_modal, target: :_top do %>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-controller="bs-modal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      
-          <div class='container'>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-controller="bs-modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Успеваемость</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        
+        <div class='container'>
+          <% if Current.user.student?%>
+            <% sum = 0 %>
+            <% @new_model.jresult.each do |ind| %> 
+              <% sum += ind.to_i %>
+            <% end %>
+            <% if sum > 25%>
+              <div> Ваша оценка: "5", при баллах: <%= sum %> </div>
+          <% elsif sum > 21 %>
+              <div> Ваша оценка: "4", при баллах: <%= sum %> <br> Вам не хватает <%= 25-sum %> баллов до оценки "5" </div>
+          <% elsif sum > 18 %>
+              <div> Ваша оценка: "3", при баллах: <%= sum %> <br> Вам не хватает <%= 21-sum %> баллов до оценки "4" </div>
+          <% elsif sum < 18 %>
+              <div> Ваша оценка: неуд, при баллах: <%= sum %> <br> Вам не хватает <%= 18-sum %> баллов до оценки "3" </div>
+          <% end %>
+
+          <% else %>
             <%= form_with url: posit_path(name: Predmet.find_by(id: params[:predmet_id]).name, id: User.find_by(id: params[:id]).stud.first.id) do |form| %>
               <% @new_model.jresult.each_with_index do |ind, index| %> 
-
                 <div>
-                <%= if index.even? then (form.label :"rk#{@i_rk += 1}") else (form.label :"dz#{@i_dz += 1}") end%>
-                <%= form.text_field :"fs#{index}", value: ind, class: "form-control" %>
-                <%#(name: Predmet.find_by(id: params[:predmet_id]).name, id: User.find_by(id: params[:id]).stud.first.id) %>
+                  <%= if index.even? then (form.label :"rk#{@i_rk += 1}") else (form.label :"dz#{@i_dz += 1}") end%>
+                  <%= form.number_field :"fs#{index}", max: 5, min: 1, value: ind, class: "form-control" %>
                 </div>
-
               <% end %>
               <%= form.submit value: "Edit", class: "btn btn-info", data: {action: "click->bs-modal#submitEnd" }  %>
             <% end %>
-            
-          </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

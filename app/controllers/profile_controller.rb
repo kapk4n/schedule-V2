@@ -10,4 +10,8 @@ class ProfileController < ApplicationController
     @pred = Predmet.find_by(id: params[:id])
     @ind = 0
   end
+
+  def homew
+    Current.user.teach.first.predmet.update(homework: params[:dz])
+  end
 end

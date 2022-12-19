@@ -1,47 +1,58 @@
 <div id='result_container'>
 
   <table class="table table-striped table-hover">
-    <th><%= @pred%> </th>
-    <% 6.times do %>
-      <th> <%= @i += 1 %> </th>
-    <% end %>
+    <th><%= @pred.name %> </th>
+    <th> H/W 1 </th>
+    <th> R/k 1 </th>
+    <th> H/W 2 </th>
+    <th> R/k 2 </th>
+    <th> H/W 3 </th>
+    <th> R/k 3 </th>
     <th> Final </th>
-    <th> edit </th>
-  <%#= form_with model: @studs, url: posetion_edit_path do |form| %>
+       
+    <% if @cur_us.role == 'student' %>  
+      <th> Results </th>
+    <% else %>
+      <th> Edit </th>
+    <% end %>
+
 
     <% @studs.each do |qr| %>
     <tr>
       <td><%= qr.user.name %></td>
 
-        <% qr.list.where(predmet_id: Predmet.find_by(name: @pred)).first.jresult.each do |we| %> 
+        <% qr.list.where(predmet_id: @pred).first.jresult.each do |we| %> 
           <td><%= we %></td>
         <% end %>
 
       <td> 
       <% su = 0 %>
-      <% qr.list.where(predmet_id: Predmet.find_by(name: @pred)).first.jresult.each do |i| su += i.to_i end%> <%= su %> 
+      <% qr.list.where(predmet_id: @pred).first.jresult.each do |i| su += i.to_i end%> <%= su %> 
         
     </td>
       <td>
       
-      <%= form_with url: posetion_edit_path(id: qr.user.id, predmet_id: Predmet.find_by(name: @pred).id ) do |form| %>
-        <% if Current.user.role == 'admin' %>
+      <%= form_with url: posetion_edit_path(id: qr.user.id, predmet_id: @pred.id ) do |form| %>
+        <% if @cur_us.role == 'admin' %>
           <%= form.submit value: "Show", class: "btn btn-info" %>
-        <% elsif Current.user.role == 'teacher' && Current.user.teach.first.predmet.name == @pred %>
-          <%= link_to "teach", profile_path(Current.user.id) %>
-        <% else %>
-          <%= link_to "stud", schedule_path %>
+        <% elsif @cur_us.role == 'teacher' %>
+          <% if @cur_us.id == @pred.teach.user_id %>
+            <%= form.submit value: "Show", class: "btn btn-info" %>
+          <% else %>
+            <%= form.submit value: "Show", class: "btn btn-info disabled" %>
+          <% end %>
+        <% elsif @cur_us.role == 'student' %>
+          <% if @cur_us.id == qr.user.id %>
+            <%= form.submit value: "Show", class: "btn btn-info" %>
+          <% else %>
+            <%= form.submit value: "Show", class: "btn btn-info disabled" %>
+          <% end %>
         <% end %>
       <% end %>
 
     </td>
-
     </tr> 
-    <%# end %>
-
-
-
 
     <% end %>
-  </table>
+      </table>
 </div>

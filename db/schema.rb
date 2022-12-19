@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_17_180050) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_18_183912) do
   create_table "lists", force: :cascade do |t|
     t.string "spisok"
     t.integer "stud_id", null: false
@@ -26,6 +26,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_17_180050) do
     t.integer "teach_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "homework"
     t.index ["teach_id"], name: "index_predmets_on_teach_id"
   end
 

@@ -31,9 +31,15 @@
       
   </table>
 
+
 <% if (User.present?) && (Current.user == User.find_by(id: params[:id])) %>
+<% if (User.present?) && (Current.user.role == 'teacher') %>
+  <%= form_with url: profile_hw_path  do |form| %>
+    <%= form.text_field :dz, value: Current.user.teach.first.predmet.homework %>
+    <%= form.submit "Save Homework", class: "btn btn-primary" %>
+  <% end %>
+<% end %>
   <%= link_to "Edit my password", edit_password_path %>
 <% end %>
-
-
-  <%= link_to "back", schedule_path , class: "btn btn-warning" %>
+<br>
+ <%= link_to "back", schedule_path , class: "btn btn-warning" %>
