@@ -32,10 +32,10 @@
                 <%= link_to Current.user.role, profile_path(id: Current.user.id), class: "nav-link" %>   <%# edit_password_path %>
               </li>
               <li class="nav-item">
-                <%= button_to "Logout teach", logout_path, method: :delete,  class: "btn btn-outline-danger" %>
+                <%= link_to "Посещаемость", posetion_path(id: Current.user.id),  class: "btn btn-outline-success me-2" %>
               </li>
               <li class="nav-item">
-                <%= link_to "Посещаемость", posetion_path(id: Current.user.id),  class: "btn btn-outline-success me-2" %>
+                <%= button_to "Logout", logout_path, method: :delete,  class: "btn btn-outline-danger" %>
               </li>
             <% else %>
               <% if Current.user.role == "student" %>
@@ -43,10 +43,10 @@
                   <%= link_to Current.user.role, profile_path(id: Current.user.id), class: "nav-link" %>   <%# edit_password_path %>
                 </li>
                 <li class="nav-item">
-                  <%= button_to "Logout stud", logout_path, method: :delete,  class: "btn btn-outline-danger" %>
+                  <%= link_to "Посещаемость", posetion_path(id: Current.user.id),  class: "btn btn-outline-success me-2" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "Посещаемость", posetion_path(id: Current.user.id),  class: "btn btn-outline-success me-2" %>
+                  <%= button_to "Logout", logout_path, method: :delete,  class: "btn btn-outline-danger" %>
                 </li>
               <% end %>
             <% end %>

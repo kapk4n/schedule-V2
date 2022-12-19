@@ -19,9 +19,7 @@ class PoseshaemostController < ApplicationController
   def open
     @studs = Stud.all
     @cur_us = Current.user
-    if params[:commit] == 'Edit'
-      replacing
-    end
+    replacing if params[:commit] == 'Edit'
     @i = 0
     @pred = Predmet.find_by(name: params[:name])
     @user = User.find_by(email: params[:email])

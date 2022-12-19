@@ -1,1 +1,4 @@
-<%= turbo_stream.replace "result_container", partial: 'result'%>
+<% if params[:name] == '' %>
+<% else %>
+  <%= turbo_stream.replace "result_container", partial: 'result'%>
+<% end %>

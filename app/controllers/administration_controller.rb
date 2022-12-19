@@ -11,27 +11,37 @@ class AdministrationController < ApplicationController
   end
 
   def update
-    if params[:commit] == 'Edit'
-      if !User.find_by(id: params[:id]).nil? && User.find_by(id: params[:id]).role != 'admin'
-        @user = User.find_by(id: params[:id])
-        redirect_to editrole_new_path(role: params[:role], id: params[:id]), notice: "Your #{@user.email} has role: #{@user.role}"
-      else
-        redirect_to administration_path, alert: "Invalid id"
-      end
-    elsif params[:commit] == 'Delete'
-      if !User.find_by(id: params[:id]).nil? && User.find_by(id: params[:id]).role != 'admin'
-        @user = User.find_by(id: params[:id])
-        redirect_to administration_path, notice: "Sucsessfully deleted"
-        @user.destroy
-      else
-        redirect_to administration_path, alert: "Invalid id"
-      end
-    elsif params[:commit] == 'Create'
+    com = params[:commit]
+    if com == 'Edit'
+      @user = User.find_by(id: params[:id])
+      if_edit(params[:id], params[:role])
+    elsif com == 'Delete'
+      if_delete(params[:id])
+    elsif com == 'Create'
       redirect_to creatinguser_new_path
     end
   end
 
   private
+
+  def if_edit(id, role)
+    if !User.find_by(id: id).nil? && User.find_by(id: id).role != 'admin'
+      user = User.find_by(id: id)
+      redirect_to editrole_new_path(role: role, id: id), notice: "Your #{user.email} has role: #{user.role}"
+    else
+      redirect_to administration_path, alert: "Invalid id"
+    end
+  end
+
+  def if_delete(id)
+    if !User.find_by(id: id).nil? && User.find_by(id: id).role != 'admin'
+      user = User.find_by(id: id)
+      redirect_to administration_path, notice: "Sucsessfully deleted"
+      user.destroy
+    else
+      redirect_to administration_path, alert: "Invalid id"
+    end
+  end
 
   def checking_id
     params.require(:user).permit(params[:id])

@@ -10,19 +10,18 @@ class EditroleController < ApplicationController
     @ro = params[:role]
     user = User.find_by(id: params[:id])
     if (@ro == '1' || @ro == '0') && (!User.find_by(id: params[:id]).nil? && User.find_by(id: params[:id]).role != 'admin')
-      user.update(role: @ro.to_i)
-      if user.student?
-        Teach.find_by(user_id: user.id).destroy
-        jcreate(user)
-      end
-      if user.teacher?
-        # List.where(stud_id: user.stud.first.id).delete
+      if user.student? && @ro == '1'
         Stud.find_by(user_id: user.id).destroy
         Teach.create(user_id: user.id)
       end
+      if user.teacher? && @ro == '0'
+        Teach.find_by(user_id: user.id).destroy
+        jcreate(user)
+      end
+      user.update(role: @ro.to_i)
       redirect_to administration_path, notice: "You edited user #{user.email} role to #{user.role}"
     else
-      redirect_to edrole_path, notice: 'Invalid role or id'
+      redirect_to editrole_new_path, alert: 'Invalid role or id'
     end
   end
 
