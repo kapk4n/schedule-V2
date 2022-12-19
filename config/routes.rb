@@ -7,8 +7,7 @@ Rails.application.routes.draw do
 
 
   get 'ed_subject/edit'
-  get 'ed_subject/edsubj'
-  post 'ed_sub', to: 'editrole#created'
+  post 'ed_sub', to: 'ed_subject#created'
 
   get 'creatinguser/new'
   get 'creatinguser/edit'

@@ -1,8 +1,23 @@
-<%= form_with model: @user, url: ed_sub_path(id: params[:id]) do |form| %>
+<%= form_with model: @user, url: ed_sub_path(id: params[:id], fr_pe: @free_prep) do |form| %>
 
   <div class="mb-3">
-    <%= form.select :subj, @list_of_subj.each {|i| i}, include_blank: true %>
-    <%# <%= form.text_field :role, class: "form-control", placeholder: "role" %>
+    <%= form.label :Subject %>
+    <%= form.text_field :subj %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :day %>
+    <%= form.text_field :day %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :time %>
+    <%= form.text_field :time %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :prepod %>
+    <%= form.select :prepodovat, @free_prep.each, include_blank: true %>
   </div>
 
   <div class="mb-3">

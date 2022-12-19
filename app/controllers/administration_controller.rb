@@ -19,6 +19,8 @@ class AdministrationController < ApplicationController
       if_delete(params[:id])
     elsif com == 'Create'
       redirect_to creatinguser_new_path
+    elsif com == 'Edit Subject'
+      redirect_to ed_subject_edit_path
     end
   end
 
@@ -37,7 +39,12 @@ class AdministrationController < ApplicationController
     if !User.find_by(id: id).nil? && User.find_by(id: id).role != 'admin'
       user = User.find_by(id: id)
       redirect_to administration_path, notice: "Sucsessfully deleted"
-      user.destroy
+      if user.teacher?
+        Schedule.find_by(predmet_id: Predmet.find_by(teach_id: user.teach.first.id).id).destroy unless Schedule.find_by(predmet_id: Predmet.find_by(teach_id: user.teach.first.id).id).nil?
+        List.where(predmet_id: user.teach.first.predmet.id).destroy_all unless List.find_by(predmet_id: user.teach.first.predmet.id).nil?
+        Predmet.find_by(teach_id: user.teach.first.id).destroy unless Predmet.find_by(teach_id:user.teach.first.id).nil?
+      end
+        user.destroy
     else
       redirect_to administration_path, alert: "Invalid id"
     end
