@@ -119,7 +119,8 @@ en:
       sub: Reset Password
 
   ed_subject:
-    notice: "Subject #{params[:subj]} sucssessfylly created"
+    notice: "Subject sucssessfylly created"
+    notice2: "Subject sucssessfylly deleted"
     alert: 'Invalid name of Subject or Teacher'
     edit:
       subject: Subject
@@ -128,6 +129,14 @@ en:
       prepod: Teacher
       sub1: Create
       sub2: Back
+    delsub:
+      subject: Subject
+      day: Day
+      time: Time
+      sub1: Create
+      sub2: Back
+      sub3: Delete
+      sub4: DELETE POLNOSIU SUBJECT
 
   creatinguser:
     notice: 'Successfully created account'
@@ -150,7 +159,8 @@ en:
       sub1: 'Edit'
       sub2: 'Delete'
       sub3: 'Create'
-      sub4: 'Edit Subject'
+      sub4: 'Create Subject'
+      sub5: 'Edit Subject'
       id: Id
       name: Name
       email: Email

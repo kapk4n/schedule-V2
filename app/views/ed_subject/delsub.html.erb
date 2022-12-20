@@ -1,0 +1,35 @@
+<%= form_with model: @user, url: ed_sub_ed_path do |form| %>
+  <table>
+    <tr>
+      <div class="mb-3">
+        <td> <%= form.label value = t('.subject') %> </td>
+        <td> <%= form.select :name, @pred_names.each, include_blank: true %> </td>
+      </div>
+    </tr>
+    <tr>
+      <div class="mb-3">
+        <td> <%= form.label value = t('.day') %> </td>
+        <td> <%= form.select :day, @day_list.each, include_blank: true  %> </td>
+      </div>
+    </tr>
+    <tr>
+      <div class="mb-3">
+        <td> <%= form.label value = t('.time') %> </td>
+        <td> <%= form.text_field :time %> </td>
+      </div>
+   </tr>
+    <tr>
+      <div class="mb-3">
+        <td> <%= form.submit "#{t('.sub1')}", class: "btn btn-success" %> </td>
+        <td> <%= link_to "#{t('.sub2')}", administration_path , class: "btn btn-warning" %> </td>
+      </div>
+    </tr>
+    <tr>
+      <td> <%= form.submit "#{t('.sub3')}", class: "btn btn-danger" %> </td>
+    </tr>
+    <tr>
+      <td> <%= form.submit "#{t('.sub4')}", class: "btn btn-danger" %> </td>
+    </tr>
+  </table>
+
+<% end %>

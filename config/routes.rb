@@ -5,10 +5,11 @@ Rails.application.routes.draw do
     post 'posit', to: 'poseshaemost#open'
     post 'posetion/edit', to: 'poseshaemost#jedit'
 
-
-
     get 'ed_subject/edit'
     post 'ed_sub', to: 'ed_subject#created'
+    get 'ed_sub/ed', to: 'ed_subject#delsub'
+    post 'ed_sub/ed', to: 'ed_subject#new'
+    # post 'ed_sub/del', to: 'ed_subject#dele'
 
     get 'creatinguser/new'
     get 'creatinguser/edit'

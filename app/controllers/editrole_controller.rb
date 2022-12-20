@@ -16,9 +16,10 @@ class EditroleController < ApplicationController
       end
       if user.teacher? && @ro == '0'
         unless Predmet.find_by(teach_id: user.teach.first.id).nil?
-          Schedule.find_by(predmet_id: Predmet.find_by(teach_id: user.teach.first.id).id).destroy unless Schedule.find_by(predmet_id: Predmet.find_by(teach_id: user.teach.first.id).id).nil?
-          List.where(predmet_id: Predmet.find_by(teach_id: user.teach.first.id).id).destroy_all unless List.find_by(predmet_id: Predmet.find_by(teach_id: user.teach.first.id).id).nil?
-          Predmet.find_by(teach_id: user.teach.first.id).destroy unless Predmet.find_by(teach_id: user.teach.first.id).nil?
+          pred_id = Predmet.find_by(teach_id: user.teach.first.id)
+          Schedule.where(predmet_id: pred_id.id).destroy_all unless Schedule.find_by(predmet_id: pred_id.id).nil?
+          List.where(predmet_id: pred_id.id).destroy_all unless List.find_by(predmet_id: pred_id.id).nil?
+          pred_id.destroy unless pred_id.nil?
 
         end
         Teach.find_by(user_id: user.id).destroy

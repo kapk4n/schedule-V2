@@ -19,8 +19,10 @@ class AdministrationController < ApplicationController
       if_delete(params[:id])
     elsif com == 'Create' || com == 'Создать'
       redirect_to creatinguser_new_path
-    elsif com == 'Edit Subject' || com == 'Изменить Предмет'
+    elsif com == 'Create Subject' || com == 'Cоздать Предмет'
       redirect_to ed_subject_edit_path
+    elsif com == 'Edit Subject' || com == 'Изменить Предмет'
+      redirect_to ed_sub_ed_path
     end
   end
 
@@ -41,9 +43,10 @@ class AdministrationController < ApplicationController
       redirect_to administration_path, notice: "#{t('administration.ne.notice2')}"
       if user.teacher?
         unless Predmet.find_by(teach_id: user.teach.first.id).nil?
-          Schedule.find_by(predmet_id: Predmet.find_by(teach_id: user.teach.first.id).id).destroy unless Schedule.find_by(predmet_id: Predmet.find_by(teach_id: user.teach.first.id).id).nil?
+          pred_id = Predmet.find_by(teach_id: user.teach.first.id)
+          Schedule.where(predmet_id: pred_id.id).destroy_all unless Schedule.find_by(predmet_id: pred_id.id).nil?
           List.where(predmet_id: user.teach.first.predmet.id).destroy_all unless List.find_by(predmet_id: user.teach.first.predmet.id).nil?
-          Predmet.find_by(teach_id: user.teach.first.id).destroy
+          pred_id.destroy
         end
       end
         user.destroy
