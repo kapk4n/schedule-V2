@@ -1,4 +1,4 @@
-<h1>Profile</h1>
+<h1><%= t('.title') %></h1>
 <br>
 <table class="table table-borderless">
     <th>
@@ -7,12 +7,12 @@
     <h5>
       <tr>
         <td> 
-          <h5>Email:
+          <h5><%= t('.email') %>
         </td>
         <td>  <h5><%= @user.email %>  </h5> </td>
       </tr>
       <tr>
-        <td>  <h5>Role: </h5> </td>
+        <td>  <h5><%= t('.role') %></h5> </td>
         <td>  <h5><%= @user.role %> </h5>  </td>
       </tr>
       <% if @user.role == 'teacher' %>
@@ -20,7 +20,7 @@
       <tr> <td>  </td></tr>
 
         <tr>
-          <td>  <h5>Subject:  </h5></td>
+          <td>  <h5><%= t('.subject') %>  </h5></td>
         </tr>
           <% @user.teach.each do |sub| %>
             <td><h6> <%=link_to sub.predmet.name, sub_prof_path(id: Predmet.find_by(name: sub.predmet.name)) %>  </h6></td>
@@ -36,10 +36,10 @@
 <% if (User.present?) && (Current.user.role == 'teacher') %>
   <%= form_with url: profile_hw_path  do |form| %>
     <%= form.text_field :dz, value: Current.user.teach.first.predmet.homework %>
-    <%= form.submit "Save Homework", class: "btn btn-primary" %>
+    <%= form.submit "#{p('.hw')}", class: "btn btn-primary" %>
   <% end %>
 <% end %>
-  <%= link_to "Edit my password", edit_password_path %>
+  <%= link_to "#{t('.sub2')}", edit_password_path %>
 <% end %>
 <br>
- <%= link_to "back", schedule_path , class: "btn btn-warning" %>
+ <%= link_to "#{t('.sub1')}", schedule_path , class: "btn btn-warning" %>

@@ -6,9 +6,9 @@ class PasswordsController < ApplicationController
 
   def update
     if Current.user.update(password_params)
-      redirect_to root_path, notice: "Password changed"
+      redirect_to root_path, notice: "#{t('.notice')}"
     else
-      flash[:alert] = "no match"
+      flash[:alert] = "#{t('.alert')}"
       redirect_to edit_password_path
     end
   end

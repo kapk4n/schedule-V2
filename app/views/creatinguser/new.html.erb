@@ -17,25 +17,25 @@
     <div id="try"></div>
 
     <div class="mb-3">
-      <%= form.label :name %>
+      <%= form.label value = t('.name') %>
       <%= form.text_field :name, class: "form-control", placeholder: "Ivan" %>
     </div>
     <div class="mb-3">
-      <%= form.label :email %>
+      <%= form.label value = t('.email') %>
       <%= form.text_field :email, class: "form-control", placeholder: "student@bmstu.ru" %>
     </div>
     <div class="mb-3">
-      <%= form.label :password %>
+      <%= form.label value = t('.pass') %>
       <%= form.password_field :password, class: "form-control", placeholder: "password"%>
     </div>
     <div class="mb-3">
-      <%= form.label :password_confirmation %>
+      <%= form.label value = t('.pass_con') %>
       <%= form.password_field :password_confirmation, class: "form-control", placeholder: "password" %>
     </div>
 
     <div class="mb-3">
-      <%= form.submit "Create", class: "btn btn-primary" %>
-      <%= link_to "Back", administration_path , class: "btn btn-warning" %>
+      <%= form.submit "#{t('.sub1')}", class: "btn btn-primary" %>
+      <%= link_to "#{t('.sub2')}", administration_path , class: "btn btn-warning" %>
     </div>
     
 <% end %>

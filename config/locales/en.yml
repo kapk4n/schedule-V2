@@ -1,33 +1,180 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   "true": "foo"
-#
-# To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  en: English
+  ru: Russian
+  # activerecord:
+  #   attributes:
+  #     schedule:
+  #       day:
+  #         Monday: Monday
+  #         Tuesday: Tuesday 
+  #         Wednesday: Wednesday
+  #         Thursday: Thursday
+  #         Friday: Friday 
+  #         Saturday: Saturday
+
+  application:
+    aler1: "You mast be signeed in to do"
+    aler2: You don't have prava
+    aler3: You are not a teacher
+
+  sessions:
+    notice1: "Successfully log in account"
+    notice2: "Loged out"
+    alert: "Invalid"
+    session_modal:
+      title: Login
+      email: Email
+      pass: Password
+      sub1: Log in
+      sub2: Forgot your password?
+
+  registrations:
+    notice: "Successfully created account"
+    alert: Invalid
+    form_modal:
+      title: Sign Up
+      name: Name
+      email: Email
+      pass: Password
+      pass_con: Password Confirmation
+      sub: Sign Up
+
+  editrole:
+    notice1: You edited user
+    notice2: role to
+    alert: Invalid role or id
+
+  profile:
+    edit:
+      title: Profile
+      email: 'Email:'
+      role: 'Role:'
+      subject: 'Subject:'
+      hw: Save Homework
+      sub1: Back
+      sub2: Edit my password
+    edsubj:
+      title: Subject Profile
+      teacher: 'Teacher:'
+      sub: Back
+
+  poseshaemost:
+    edit_form:
+      rk: RK
+      dz: HW
+      title: Academic Performance
+      text1: 'Your mark: "5", with points:'
+      text2: 'Your mark: "4", with points:'
+      text3: 'Your mark: "3", with points:'
+      text4: 'Your mark: so bad, with points:'
+      text5: 'You need'
+      text6: 'points to "5"'
+      text7: 'points to "4"'
+      text8: 'points to "3"'
+      sub1: 'Edit'
+    result:
+      text1: 'H/W 1'
+      text2: 'R/k 1'
+      text3: 'H/W 1'
+      text4: 'R/k 1'
+      text5: 'H/W 1'
+      text6: 'R/k 1'
+      text7: 'Final'
+      text8: Results
+      text9: Edit
+      sub: Show
+    show:
+      title: Attendance
+      sub: Show
+
+  passwords:
+    notice: "Password changed"
+    alert: "No match"
+    edit:
+      title: Edit Password
+      pass: Password
+      pass_con: Password Confirmation
+      sub1: Edit Password
+
+  password_resets:
+    notice1: "If an account with that email was found, we have to sent alink to reset"
+    alert1: "Your token has expired. Please try again."
+    notice2: "Your password was reset successfully. Please sign in"
+    alert2: "Invalid"
+    edit:
+      title: Reset your password
+      pass: Password
+      pass_con: Password Confirmation
+      sub1: Reset Password
+    new:
+      title: Forgot your password?
+      email: Email
+      sub1: Reset Password
+
+  password_mailer:
+    reset:
+      hi: Hi
+      text: 'Someone requested a reset of your password
+            If it was you, click the link to reset your password. The link will expire automaticly in 15 minutes.'
+      sub: Reset Password
+
+  ed_subject:
+    notice: "Subject #{params[:subj]} sucssessfylly created"
+    alert: 'Invalid name of Subject or Teacher'
+    edit:
+      subject: Subject
+      day: Day
+      time: Time
+      prepod: Teacher
+      sub1: Create
+      sub2: Back
+
+  creatinguser:
+    notice: 'Successfully created account'
+    error: 'Invalid'
+    new:
+      name: Name
+      email: Email
+      pass: Password
+      pass_con: Password Confirmation
+      sub1: Create
+      sub2: Back
+
+  administration:
+    ne:
+      error1: Invalid id
+      notice1: has role
+      notice2: Sucsessfully deleted
+    edit:
+      title: 'Admin Page'
+      sub1: 'Edit'
+      sub2: 'Delete'
+      sub3: 'Create'
+      sub4: 'Edit Subject'
+      id: Id
+      name: Name
+      email: Email
+      role: Role
+
+  schedule: 
+    bmstu_schedule:
+      title: 'Schedule page'
+      submi: 'Show'
+    result:
+      title: 'Schedule'
+      time: Time
+      name: Name
+      teacher: Teacher
+      homework: Homework
+      holid: HOLIDAY
+
+  menu:
+    home: 'welcome to schedule'
+  nav:
+    home: 'Home'
+    schedule: 'Schedule'
+    prava: 'Edit Roots'
+    posesh: 'Attendance'
+    logout: 'Logout'
+    login: 'Log in'
+    signup: 'Sign Up'

@@ -9,21 +9,21 @@ class PasswordResetsController < ApplicationController
       PasswordMailer.with(user: @user).reset.deliver_now
     end
 
-    redirect_to root_path, notice: "If an account with that email was found, we have to sent alink to reset"
+    redirect_to root_path, notice: "#{t('password_resets.notice1')}"
   end
 
   def edit
     @user = User.find_signed!(params[:token], purpose: "password_reset")
   rescue ActiveSupport::MessageVerifier::InvalidSignature
-    redirect_to sign_in_path, alert: "Your token has expired. Please try again."
+    redirect_to sign_in_path, alert: "#{t('password_resets.alert1')}"
   end
 
   def update
     @user = User.find_signed( params[:token], purpose: "password_reset")
     if @user.update(password_params)
-      redirect_to sign_in_path, notice: "Your password was reset successfully. Please sign in"
+      redirect_to sign_in_path, notice: "#{t('password_resets.notice1')}"
     else
-      flash[:alert] = "nononono"
+      flash[:alert] = "#{t('password_resets.alert2')}"
       redirect_to password_reset_edit_path(token: params[:token])
     end
 

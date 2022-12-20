@@ -1,4 +1,4 @@
-<h1>Reset your password</h1>
+<h1><%= t('.title') %></h1>
   <%= form_with model: @user, url: password_reset_edit_path(token: params[:token]) do |form| %>
     <% if form.object.errors.any? %>
       <div class="alert alert-danger">
@@ -9,15 +9,15 @@
     <%end%>
     
     <div class="mb-3">
-      <%= form.label :password %>
+      <%= form.label value = t('.pass') %>
       <%= form.password_field :password, class: "form-control", placeholder: "password"%>
     </div>
     <div class="mb-3">
-      <%= form.label :password_confirmation %>
+      <%= form.label value = t('.pass_con') %>
       <%= form.password_field :password_confirmation, class: "form-control", placeholder: "password" %>
     </div>
 
     <div class="mb-3">
-      <%= form.submit "Reset Password", class: "btn btn-primary" %>
+      <%= form.submit "#{t('.sub1')}", class: "btn btn-primary" %>
     </div>
 <% end %>

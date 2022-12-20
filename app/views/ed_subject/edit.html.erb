@@ -1,28 +1,28 @@
 <%= form_with model: @user, url: ed_sub_path(id: params[:id], fr_pe: @free_prep) do |form| %>
 
   <div class="mb-3">
-    <%= form.label :Subject %>
+    <%= form.label value = t('.subject') %>
     <%= form.text_field :subj %>
   </div>
 
   <div class="mb-3">
-    <%= form.label :day %>
+    <%= form.label value = t('.day') %>
     <%= form.text_field :day %>
   </div>
 
   <div class="mb-3">
-    <%= form.label :time %>
+    <%= form.label value = t('.time') %>
     <%= form.text_field :time %>
   </div>
 
   <div class="mb-3">
-    <%= form.label :prepod %>
+    <%= form.label value = t('.prepod') %>
     <%= form.select :prepodovat, @free_prep.each, include_blank: true %>
   </div>
 
   <div class="mb-3">
-      <%= form.submit "Save", class: "btn btn-success" %>
-      <%= link_to "back", administration_path , class: "btn btn-warning" %>
+      <%= form.submit "#{t('.sub1')}", class: "btn btn-success" %>
+      <%= link_to "#{t('.sub2')}", administration_path , class: "btn btn-warning" %>
 
   </div>
 <% end %>

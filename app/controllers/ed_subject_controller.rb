@@ -14,13 +14,13 @@ class EdSubjectController < ApplicationController
 
   def created
     pr = params[:prepodovat]
-    if Predmet.find_by(name: params[:subj]).nil? && pr != '' && !params[:fr_pe].select { |_x, y| y == pr }.nil? && !params[:time].nil? && !params[:day].nil?
+    if Predmet.find_by(name: params[:subj]).nil? && pr != '' && !params[:fr_pe].select { |_x, y| y == pr }.nil? && params[:time] != '' && !params[:day] != ''
       n_pred = Predmet.create(teach_id: pr, name: params[:subj])
       jcreate(n_pred.id)
       Schedule.create(predmet_id: n_pred.id, time: params[:time], day: params[:day])
-      redirect_to administration_path, notice: "Subject #{params[:subj]} sucssessfylly created"
+      redirect_to administration_path, notice: "#{t('.notice')} #{params[:subj]} "
     else
-      redirect_to ed_subject_edit_path, alert: 'Invalid name of Subject or Teacher'
+      redirect_to ed_subject_edit_path, alert: "#{t('.alert')}"
     end
   end
 

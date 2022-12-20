@@ -1,4 +1,4 @@
-<h1>Subject Profile</h1>
+<h1><%= t('.title') %></h1>
 <br>
 <table class="table table-borderless">
     <th>
@@ -8,7 +8,7 @@
       <tr> <td>  </td></tr>
 
         <tr>
-          <td>  <h5>Teacher:  </h5></td>
+          <td>  <h5><%= t('.teacher') %>  </h5></td>
         </tr>
             <td> <h6><%= link_to @pred.teach.user.name, profile_path(id:  @pred.teach.user.id), class:"link-info" %> </h6> </td>
         </tr>
@@ -16,4 +16,4 @@
       
   </table>
 
-  <%= link_to "back", schedule_path , class: "btn btn-warning" %>
+  <%= link_to "#{t('.sub')}", schedule_path , class: "btn btn-warning" %>

@@ -1,7 +1,3 @@
-Hi <%= params[:user].email %>,
+<%= t('.hi') %> <%= params[:user].email %>, <%= t('.text') %>
 
-Someone requested a reset of your password
-
-If it was you, click the link to reset your password. The link will expire automaticly in 15 minutes.
-
-<%= link_to "Reset password", password_reset_edit_url( token: @token ) %>
+<%= link_to "#{t('.sub')}", password_reset_edit_url( token: @token ) %>

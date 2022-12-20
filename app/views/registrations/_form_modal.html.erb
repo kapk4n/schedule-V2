@@ -3,7 +3,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
+        <h5 class="modal-title" id="exampleModalLabel"> <%= t('.title') %> </h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
   <%= form_with model: @user, url: sign_up_path do |form| %>
@@ -19,24 +19,24 @@
 
 
     <div class="form-group">
-      <%= form.label :name, class: "form-label mb-2 mt-3" %>
+      <%= form.label value = t('.name'), class: "form-label mb-2 mt-3" %>
       <%= form.text_field :name, class: "form-control form-control-lg", placeholder: "student@bmstu.ru" %>
     </div>
     <div class="form-group">
-      <%= form.label :email, class: "form-label mb-2 mt-3" %>
+      <%= form.label value = t('.email'), class: "form-label mb-2 mt-3" %>
       <%= form.text_field :email, class:  "form-control form-control-lg", placeholder: "student@bmstu.ru" %>
     </div>
     <div class="form-group">
-      <%= form.label :password, class: "form-label mb-2 mt-3" %>
+      <%= form.label value = t('.pass'), class: "form-label mb-2 mt-3" %>
       <%= form.password_field :password, class:  "form-control form-control-lg", placeholder: "password"%>
     </div>
     <div class="form-group">
-      <%= form.label :password_confirmation, class: "form-label mb-2 mt-3" %>
+      <%= form.label value = t('.pass_con'), class: "form-label mb-2 mt-3" %>
       <%= form.password_field :password_confirmation, class:  "form-control form-control-lg", placeholder: "password" %>
     </div>
       <div class="modal-footer">
 
-      <%= form.submit "Sign Up", class: "btn btn-primary", data: {action: "click->bs-modal#submitEnd" } %>
+      <%= form.submit "#{t('.sub')}", class: "btn btn-primary", data: {action: "click->bs-modal#submitEnd" } %>
       </div>
 <% end %>
     </div>

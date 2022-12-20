@@ -76,4 +76,6 @@ end
 
 gem  'bootstrap', 	'~> 	4.0.0.alpha6'
 
-
+gem 'rails-i18n', '~> 7.0.0' 
+gem 'translate_enum', require: 'translate_enum/active_record'
+gem 'enum-i18n'

@@ -19,15 +19,15 @@ class EditroleController < ApplicationController
           Schedule.find_by(predmet_id: Predmet.find_by(teach_id: user.teach.first.id).id).destroy unless Schedule.find_by(predmet_id: Predmet.find_by(teach_id: user.teach.first.id).id).nil?
           List.where(predmet_id: Predmet.find_by(teach_id: user.teach.first.id).id).destroy_all unless List.find_by(predmet_id: Predmet.find_by(teach_id: user.teach.first.id).id).nil?
           Predmet.find_by(teach_id: user.teach.first.id).destroy unless Predmet.find_by(teach_id: user.teach.first.id).nil?
-          
+
         end
         Teach.find_by(user_id: user.id).destroy
         jcreate(user)
       end
       user.update(role: @ro.to_i)
-      redirect_to administration_path, notice: "You edited user #{user.email} role to #{user.role}"
+      redirect_to administration_path, notice: "#{t('.notice1')} #{user.email} #{t('.notice2')} #{user.role}"
     else
-      redirect_to editrole_new_path, alert: 'Invalid role or id'
+      redirect_to editrole_new_path(id: params[:id]), alert: "#{t('.alert')}"
     end
   end
 

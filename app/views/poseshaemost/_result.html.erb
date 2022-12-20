@@ -2,18 +2,18 @@
 
   <table class="table table-striped table-hover">
     <th><%= @pred.name %> </th>
-    <th> H/W 1 </th>
-    <th> R/k 1 </th>
-    <th> H/W 2 </th>
-    <th> R/k 2 </th>
-    <th> H/W 3 </th>
-    <th> R/k 3 </th>
-    <th> Final </th>
+    <th> <%= t('.text1') %> </th>
+    <th> <%= t('.text2') %> </th>
+    <th> <%= t('.text3') %> </th>
+    <th> <%= t('.text4') %> </th>
+    <th> <%= t('.text5') %> </th>
+    <th> <%= t('.text6') %> </th>
+    <th> <%= t('.text7') %> </th>
        
     <% if @cur_us.role == 'student' %>  
-      <th> Results </th>
+      <th> <%= t('.text8') %> </th>
     <% else %>
-      <th> Edit </th>
+      <th> <%= t('.text9') %> </th>
     <% end %>
 
 
@@ -34,18 +34,18 @@
       
       <%= form_with url: posetion_edit_path(id: qr.user.id, predmet_id: @pred.id ) do |form| %>
         <% if @cur_us.role == 'admin' %>
-          <%= form.submit value: "Show", class: "btn btn-info" %>
+          <%= form.submit value: "#{t('.sub')}", class: "btn btn-info" %>
         <% elsif @cur_us.role == 'teacher' %>
           <% if @cur_us.id == @pred.teach.user_id %>
-            <%= form.submit value: "Show", class: "btn btn-info" %>
+            <%= form.submit value: "#{t('.sub')}", class: "btn btn-info" %>
           <% else %>
-            <%= form.submit value: "Show", class: "btn btn-info disabled" %>
+            <%= form.submit value: "#{t('.sub')}", class: "btn btn-info disabled" %>
           <% end %>
         <% elsif @cur_us.role == 'student' %>
           <% if @cur_us.id == qr.user.id %>
-            <%= form.submit value: "Show", class: "btn btn-info" %>
+            <%= form.submit value: "#{t('.sub')}", class: "btn btn-info" %>
           <% else %>
-            <%= form.submit value: "Show", class: "btn btn-info disabled" %>
+            <%= form.submit value: "#{t('.sub')}", class: "btn btn-info disabled" %>
           <% end %>
         <% end %>
       <% end %>

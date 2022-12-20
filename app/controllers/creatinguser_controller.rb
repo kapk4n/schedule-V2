@@ -12,9 +12,9 @@ class CreatinguserController < ApplicationController
       @user.student!
       st = Stud.create(user_id: @user.id)
       jcreate(@user, st)
-      redirect_to administration_path, notice: 'Successfully created account'
+      redirect_to administration_path, notice: "#{t('creatinguser.notice')}"
     else
-      redirect_to creatinguser_new_path, alert: 'Invalid'
+      redirect_to creatinguser_new_path, alert: "#{t('creatinguser.error')}"
     end
   end
 

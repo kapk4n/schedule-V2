@@ -10,9 +10,9 @@ class RegistrationsController < ApplicationController
       st = Stud.create(user_id: @user.id)
       jcreate(@user, st)
       session[:user_id] = @user.id
-      redirect_to root_path, notice: "Successfully created account"
+      redirect_to root_path, notice: "#{t('.notice')}"
     else
-      flash[:alert] = "Invalid"
+      flash[:alert] = "#{t('.alert')}"
       redirect_to sign_up_path
     end
   end
