@@ -8,11 +8,11 @@
     </div>
 
     <div class="mb-3">
-        <%= form.submit "#{t('.sub1')}", class: "btn btn-success" %>
+        <%= form.submit "#{t('.sub1')}", class: "btn btn-success", id: 'edit_role-btn' %>
         <%= form.submit "#{t('.sub2')}",data: { turbo_confirm: 'Are you shure of deleting' }, class: "btn btn-danger", id: 'deleting-btn' %>
         <%= form.submit "#{t('.sub3')}", class: "btn btn-warning", id: 'creating-btn' %>
-        <%= form.submit "#{t('.sub4')}", class: "btn btn-warning" %>
-        <%= form.submit "#{t('.sub5')}", class: "btn btn-warning" %>
+        <%= form.submit "#{t('.sub4')}", class: "btn btn-warning", id: 'create_subj-btn' %>
+        <%= form.submit "#{t('.sub5')}", class: "btn btn-warning", id: 'edit_subj-btn' %>
     </div>
 
 

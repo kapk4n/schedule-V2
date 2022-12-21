@@ -4,7 +4,7 @@
     <%= f.select :name, @list_pred, include_blank: true %>
     <br>
     <br>
-    <%= f.submit value: "#{t('.sub')}", class: "btn btn-info" %>
+    <%= f.submit value: "#{t('.sub')}", class: "btn btn-info", id: 'show_posesh-btn' %>
   <% end %>
 
 <div id='result_container'></div>

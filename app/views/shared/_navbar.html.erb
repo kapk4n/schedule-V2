@@ -37,32 +37,32 @@
         <% if Current.user.present? %>
           <% if Current.user.role == "admin" %>
             <li class="nav-item">
-            <%= link_to Current.user.email, profile_path(id: Current.user.id), class: "nav-link" %>   <%# edit_password_path %>
+            <%= link_to Current.user.email, profile_path(id: Current.user.id), class: "nav-link", id: 'prof-btn' %>   <%# edit_password_path %>
             </li>
             <li class="nav-item">
               <%= link_to t('nav.prava'), administration_path,  class: "btn btn-outline-success me-2", id: 'ed_roots-btn' %>
             </li>
             <li class="nav-item">
-              <%= link_to t('nav.posesh'), posetion_path,  class: "btn btn-outline-success me-2" %>
+              <%= link_to t('nav.posesh'), posetion_path,  class: "btn btn-outline-success me-2", id: 'poseshaemost-btn' %>
             </li>
             <li class="nav-item">
-              <%= button_to t('nav.logout'), logout_path, method: :delete,  class: "btn btn-outline-danger" %>
+              <%= button_to t('nav.logout'), logout_path, method: :delete,  class: "btn btn-outline-danger", id: 'logout-btn' %>
             </li>
           <% else %>
             <% if Current.user.role == "teacher" %>
               <li class="nav-item">
-                <%= link_to Current.user.email, profile_path(id: Current.user.id), class: "nav-link" %>   <%# edit_password_path %>
+                <%= link_to Current.user.email, profile_path(id: Current.user.id), class: "nav-link", id: 'prof-btn' %>   <%# edit_password_path %>
               </li>
               <li class="nav-item">
                 <%= link_to t('nav.posesh'), posetion_path(id: Current.user.id),  class: "btn btn-outline-success me-2" %>
               </li>
               <li class="nav-item">
-                <%= button_to t('nav.logout'), logout_path, method: :delete,  class: "btn btn-outline-danger" %>
+                <%= button_to t('nav.logout'), logout_path, method: :delete,  class: "btn btn-outline-danger", id: 'logout-btn' %>
               </li>
             <% else %>
               <% if Current.user.role == "student" %>
                 <li class="nav-item">
-                  <%= link_to Current.user.email, profile_path(id: Current.user.id), class: "nav-link" %>   <%# edit_password_path %>
+                  <%= link_to Current.user.email, profile_path(id: Current.user.id), class: "nav-link", id: 'prof-btn' %>   <%# edit_password_path %>
                 </li>
                 <li class="nav-item">
                   <%= link_to t('nav.posesh'), posetion_path(id: Current.user.id),  class: "btn btn-outline-success me-2" %>

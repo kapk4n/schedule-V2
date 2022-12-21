@@ -1,11 +1,4 @@
-require 'rails_helper'
+# require 'rails_helper'
 
-RSpec.describe "EdSubjects", type: :request do
-  describe "GET /edit" do
-    it "returns http success" do
-      get "/ed_subject/edit"
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-end
+# RSpec.describe "subjects", type: :request do
+# end

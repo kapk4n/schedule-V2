@@ -20,15 +20,15 @@
    </tr>
     <tr>
       <div class="mb-3">
-        <td> <%= form.submit "#{t('.sub1')}", class: "btn btn-success" %> </td>
+        <td> <%= form.submit "#{t('.sub1')}", class: "btn btn-success", id: 'create_sched-btn' %> </td>
         <td> <%= link_to "#{t('.sub2')}", administration_path , class: "btn btn-warning" %> </td>
       </div>
     </tr>
     <tr>
-      <td> <%= form.submit "#{t('.sub3')}", class: "btn btn-danger" %> </td>
+      <td> <%= form.submit "#{t('.sub3')}", class: "btn btn-danger", id: 'delete_sched-btn' %> </td>
     </tr>
     <tr>
-      <td> <%= form.submit "#{t('.sub4')}", class: "btn btn-danger" %> </td>
+      <td> <%= form.submit "#{t('.sub4')}", class: "btn btn-danger", id: 'delete_all_subj-btn' %> </td>
     </tr>
   </table>
 

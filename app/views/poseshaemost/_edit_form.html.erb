@@ -31,7 +31,7 @@
                   <%= form.number_field :"fs#{index}", max: 5, min: 1, value: ind, class: "form-control" %>
                 </div>
               <% end %>
-              <%= form.submit value: "#{t('.sub1')}", class: "btn btn-info", data: {action: "click->bs-modal#submitEnd" }  %>
+              <%= form.submit value: "#{t('.sub1')}", class: "btn btn-info", data: {action: "click->bs-modal#submitEnd" }, id: 'save_params-btn'  %>
             <% end %>
           <% end %>
         </div>

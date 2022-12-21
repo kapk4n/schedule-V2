@@ -17,7 +17,7 @@
     <% end %>
 
 
-    <% @studs.each do |qr| %>
+    <% @studs.each_with_index do |qr, index_for_test| %>
     <tr>
       <td><%= qr.user.name %></td>
 
@@ -25,7 +25,7 @@
           <td><%= we %></td>
         <% end %>
 
-      <td> 
+      <td id="id<%= index_for_test %>"> 
       <% su = 0 %>
       <% qr.list.where(predmet_id: @pred).first.jresult.each do |i| su += i.to_i end%> <%= su %> 
         
@@ -34,16 +34,16 @@
       
       <%= form_with url: posetion_edit_path(id: qr.user.id, predmet_id: @pred.id ) do |form| %>
         <% if @cur_us.role == 'admin' %>
-          <%= form.submit value: "#{t('.sub')}", class: "btn btn-info" %>
+          <%= form.submit value: "#{t('.sub')}", class: "btn btn-info", id: "show_params-btn#{index_for_test}" %>
         <% elsif @cur_us.role == 'teacher' %>
           <% if @cur_us.id == @pred.teach.user_id %>
-            <%= form.submit value: "#{t('.sub')}", class: "btn btn-info" %>
+            <%= form.submit value: "#{t('.sub')}", class: "btn btn-info", id: "show_params-btn#{index_for_test}" %>
           <% else %>
             <%= form.submit value: "#{t('.sub')}", class: "btn btn-info disabled" %>
           <% end %>
         <% elsif @cur_us.role == 'student' %>
           <% if @cur_us.id == qr.user.id %>
-            <%= form.submit value: "#{t('.sub')}", class: "btn btn-info" %>
+            <%= form.submit value: "#{t('.sub')}", class: "btn btn-info", id: "show_params-btn#{index_for_test}" %>
           <% else %>
             <%= form.submit value: "#{t('.sub')}", class: "btn btn-info disabled" %>
           <% end %>
