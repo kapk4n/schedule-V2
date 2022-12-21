@@ -4,13 +4,13 @@
 
     <div class="mb-3">
       <%= form.label :id %>
-      <%= form.text_field :id, class: "form-control", placeholder: "id" %>
+      <%= form.text_field :id, class: "form-control", placeholder: "id", id: 'id_input' %>
     </div>
 
     <div class="mb-3">
         <%= form.submit "#{t('.sub1')}", class: "btn btn-success" %>
-        <%= form.submit "#{t('.sub2')}",data: { turbo_confirm: 'Are you shure of deleting' }, class: "btn btn-danger" %>
-        <%= form.submit "#{t('.sub3')}", class: "btn btn-warning" %>
+        <%= form.submit "#{t('.sub2')}",data: { turbo_confirm: 'Are you shure of deleting' }, class: "btn btn-danger", id: 'deleting-btn' %>
+        <%= form.submit "#{t('.sub3')}", class: "btn btn-warning", id: 'creating-btn' %>
         <%= form.submit "#{t('.sub4')}", class: "btn btn-warning" %>
         <%= form.submit "#{t('.sub5')}", class: "btn btn-warning" %>
     </div>
