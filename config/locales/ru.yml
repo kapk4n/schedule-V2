@@ -1,16 +1,10 @@
 ru:
   en: Английский
   ru: Русский
-  # activerecord:
-  #   attributes:
-  #     schedule:
-  #       day:
-  #         Monday: Понедельник
-  #         Tuesday: Вторник 
-  #         Wednesday: Среда
-  #         Thursday: Четверг
-  #         Friday: Пятница 
-  #         Saturday: Суббота
+
+  main:
+    index:
+      of_site: Официальный сайт МГТУ им. Н.Э. Баумана
 
   application:
     aler1: "Вы должны быть авторизованны"

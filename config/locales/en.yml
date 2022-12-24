@@ -1,16 +1,10 @@
 en:
   en: English
   ru: Russian
-  # activerecord:
-  #   attributes:
-  #     schedule:
-  #       day:
-  #         Monday: Monday
-  #         Tuesday: Tuesday 
-  #         Wednesday: Wednesday
-  #         Thursday: Thursday
-  #         Friday: Friday 
-  #         Saturday: Saturday
+  
+  main:
+    index:
+      of_site: Official site BMSTU
 
   application:
     aler1: "You mast be signeed in to do"

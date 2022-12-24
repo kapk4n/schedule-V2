@@ -1,24 +1,6 @@
 <div class="d-flex align-items-center justify-content-center">
   <h1><%= t('menu.home')%></h1>
 </div>
-
-<%# 
-<div class="img-inner">
-  <img src='https://mockva.ru/wp-content/uploads/2020/04/baumanka.jpg'  alt="" class="rounded float-end"/>
-</div>  %>
-
-
-<%= form_with do |form| %>
-
-  <div class="mb-3">
-    <%= form.label :"Input your studing group"  %>
-    <%= form.text_field :group, class: "form-control", placeholder: "иу6-31б" %>
-  </div>
-
-  <div class="mb-3">
-    <%date = DateTime.current.to_date %>
-    <%=date.to_time(:utc)%>
-    <%= form.submit "Save", class: "btn btn-primary" %>
-  </div>
-
-<% end %>
+<%= image_tag "https://smapse.ru/storage/2019/08/x.jpg", size: '1300x500' %>
+<br>
+<%= link_to "#{t('.of_site')}", "https://bmstu.ru/"  %>
