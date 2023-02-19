@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Before start working, you must create an admin-user:
 
-Things you may want to cover:
+* Run "rails c" in the directory with project
 
-* Ruby version
+* Run " User.create(email: "test@email.com", password_digest: 123, role: "admin", name: "example") "
 
-* System dependencies
+* Now you have an admin-user, you can run " rails s " and sign in using data from 2-nd step
 
-* Configuration
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
